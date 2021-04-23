@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 const MainBlog = () => {
     const [posts,setPosts] = useState([])
@@ -30,8 +31,16 @@ const MainBlog = () => {
                         <Card.Body>
                         <Card.Title>{post.title}</Card.Title>
                           <Card.Text>
-                            {post.body}
+                            <ReactReadMoreReadLess
+                                charLimit={50}
+                                readMoreText={"Read more ▼"}
+                                readLessText={"Read less ▲"}
+                            >
+                                {post.body}
+                            </ReactReadMoreReadLess>
+                            
                           </Card.Text>
+                          
                         </Card.Body>
                         </Card>)
                 }
